@@ -16,11 +16,11 @@ def read_addresses(filename):
             addresses.append((address, private_key))
     return addresses
 
-def ethsign(privatekey,time):
+def ethsign(privatekey, time):
     message = "Greetings from Avail!\n\nSign this message to check your eligibility. This signature will not cost you any fees.\n\nTimestamp: " + time
     message = encode_defunct(text=message)
     signed_message = web3.eth.account.sign_message(message, private_key=privatekey)
-    sign = web3.to_hex(signed_message.signature)
+    sign = web3.toHex(signed_message.signature)  # 升级了这里
     return sign
 
 def post(address,privatekey):
